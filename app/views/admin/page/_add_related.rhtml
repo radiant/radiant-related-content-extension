@@ -1,0 +1,4 @@
+<span class="related_page" id="related_#{id}">
+	<a href="#" onclick="if(confirm('Are you sure you want to remove this related page?')){RelatedContent.unadd('#{id}')}; return false;">#{title}</a>
+	<input type="hidden" name="page[add_relations][]" value="#{id}">
+</span>

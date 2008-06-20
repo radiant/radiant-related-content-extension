@@ -1,0 +1,24 @@
+= Related Content
+
+Created by Sean Cribbs, October 2007
+
+Provides a way to relate pages to one another externally.  This allows you to
+generate a list of links to other pages of relevance, like so:
+
+h3. See also
+<r:related:each>
+ * <r:link />
+</r:related:each>
+
+The interface uses Ajax to retrieve matching pages based on the words you type
+and adds them to the list when you select one.  Related pages can be removed
+by clicking the name or "minus" icon next to the name.  Pages are not 
+reciprocally related; if Page B is in Page A's related content list, Page A
+may or may not be in Page B's related content list.
+
+*** This extension requires the "shards" extension! ***
+
+== Acknowledgments
+
+Thanks to Digital Pulp, Inc. for funding the initial development of this
+extension as part of the Redken.com project.

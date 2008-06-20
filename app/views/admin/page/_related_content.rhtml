@@ -1,0 +1,65 @@
+<% include_javascript 'controls' %>
+<div id="related_content_wrapper">
+  <label for="related_content">Related content</label>
+  <%= text_field_tag "related_content" %>
+  <% @page.related_pages.each do |related| %>
+    <span class="related_page" id="related_<%= related.id %>">
+      <%= link_to_function related.title, "RelatedContent.delete('#{related.id}');", :confirm => "Are you sure you want to remove this related page?" %>
+    </span>
+  <% end %>
+</div>
+<% content_for :page_scripts do %>
+	var RelatedContent = {
+		delete: function(id){
+			unadd(id);
+			new Insertion.Bottom('related_content', '<input name="page[delete_relations][]" value="'+id+'"/>');
+			return false;
+		},
+		add: function(id, title){
+			var template = new Template(<%= render(:partial => "add_related").to_json %>);
+			new Insertion.Bottom('related_content_wrapper', template.evaluate({id: id, title: title}));
+			return false;
+		},
+		unadd: function(id) {
+			$('related_'+id).remove();
+			return false;
+		}
+	};
+	var RelatedContentSelector = Behavior.create({
+	  initialize: function(){
+	    this._createAutocompleteDiv();
+	    new Ajax.Autocompleter(this.element.id, 
+	                           this.autoCompleteDiv.id, 
+	                           <%= related_pages_path.to_json %>,
+	                           { updateElement: this.addRelatedPage });
+	  },
+	  
+	  _createAutocompleteDiv: function(){
+	    this.autoCompleteDiv = $div({ 'id' : 'related_content_ac', 'class' : 'auto_complete', 'style' : 'display:none;' });
+	    this.element.parentNode.appendChild(this.autoCompleteDiv);
+	  },
+	  
+	  addRelatedPage: function(element){
+	    id = element.id;
+	    title = element.down('span.title').innerHTML;
+	    $('related_content').value = '';
+	    RelatedContent.add(id, title);
+	  }
+	});
+	Event.addBehavior({
+	  '#related_content': RelatedContentSelector
+	  });
+<% end %>
+<%= auto_complete_stylesheet %>
+<% content_for :page_css do %>
+  .related_page a {
+	font-color: gray;
+	padding-left: 18px;
+	background: url(/images/admin/minus.png) top left no-repeat;
+  }
+  div.auto_complete span.url {
+   display: block;
+   font-size: 75%;
+   color: silver;
+  }
+<% end %>
