@@ -1,7 +1,8 @@
 .clearfix:after                 {content:".";display:block;height:0;clear:both;visibility:hidden;}
 .clearfix                       {display:inline-block;}
 .clearfix                       {display:block;}
-#related_content_wrapper        {background-color:#EAE3C5;}
+#related_content_wrapper        {background-color:#EAE3C5;padding:10px;margin-top:10px;width:50%;}
+#related_content_wrapper label  {font-weight:bold;font-size:17px;}
 #related_content_wrapper label, #related_content_wrapper input, #related_content_wrapper div 
                                 {margin-right:10px;float:left;}
 .related_page a                 {color: gray;padding-left: 18px;background: url(/images/admin/minus.png) center left no-repeat;}
