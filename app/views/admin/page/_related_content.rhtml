@@ -8,17 +8,21 @@
     </span>
   <% end %>
   </div>
+  <p id="deleted" class="related_notice" style="display:none;">Removed related content will be deleted when you save this page.</p>
+  <p id="added" class="related_notice" style="display:none;">New added related content will be saved when you save this page.</p>
 </div>
 <% content_for :page_scripts do %>
 	var RelatedContent = {
 		delete: function(id){
 			RelatedContent.unadd(id);
 			new Insertion.Bottom('related_content', '<input name="page[delete_relations][]" value="'+id+'"/>');
+			$('deleted').show();
 			return false;
 		},
 		add: function(id, title){
 			var template = new Template(<%= render(:partial => "add_related").to_json %>);
 			new Insertion.Bottom('related_content_container', template.evaluate({id: id, title: title}));
+			$('added').show();
 			return false;
 		},
 		unadd: function(id) {

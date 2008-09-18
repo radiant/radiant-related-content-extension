@@ -3,8 +3,11 @@
 .clearfix                       {display:block;}
 #related_content_wrapper        {background-color:#EAE3C5;padding:10px;margin-top:10px;width:50%;}
 #related_content_wrapper label  {font-weight:bold;font-size:17px;}
+p.related_notice                {clear:both;margin-top:10px;}
+p#deleted                       {color:red;}
+p#added                         {color:green;}
 #related_content_wrapper label, #related_content_wrapper input, #related_content_wrapper div 
                                 {margin-right:10px;float:left;}
-.related_page a                 {color: gray;padding-left: 18px;background: url(/images/admin/minus.png) center left no-repeat;}
+.related_page a                 {color: gray;padding-left: 18px;background: url(/images/admin/minus.png) center left no-repeat;text-decoration:none;}
 div.auto_complete span.url      {display: block;font-size: 75%;color: blue;}
 span.related_page               {display:block;margin:0 0 5px 20px;}
