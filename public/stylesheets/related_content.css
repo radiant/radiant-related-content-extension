@@ -1,0 +1,9 @@
+.clearfix:after                 {content:".";display:block;height:0;clear:both;visibility:hidden;}
+.clearfix                       {display:inline-block;}
+.clearfix                       {display:block;}
+#related_content_wrapper        {background-color:#EAE3C5;}
+#related_content_wrapper label, #related_content_wrapper input, #related_content_wrapper div 
+                                {margin-right:10px;float:left;}
+.related_page a                 {color: gray;padding-left: 18px;background: url(/images/admin/minus.png) center left no-repeat;}
+div.auto_complete span.url      {display: block;font-size: 75%;color: blue;}
+span.related_page               {display:block;margin:0 0 5px 20px;}
