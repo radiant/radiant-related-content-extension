@@ -8,8 +8,8 @@ module RelatedContent::RelatedContentInterface
   
   module InstanceMethods
     def add_related_content_partials
-#      @buttons_partials ||= []
-#      @buttons_partials << "attachments_box"
+      @buttons_partials ||= []
+      @buttons_partials << "related_content"
       include_javascript 'lowpro'
       include_javascript 'controls'
 #      include_stylesheet 'admin/page_attachments'
