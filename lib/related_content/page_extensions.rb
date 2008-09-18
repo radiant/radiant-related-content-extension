@@ -20,8 +20,9 @@ module RelatedContent::PageExtensions
         self.outgoing_relations.find_by_to_id(r).destroy
       end
     end
+    existing_relations = outgoing_relations.map { |r| r.to_id.to_s }
     if @add_relations
-      @add_relations.each do |r|
+      (@add_relations - existing_relations).uniq.each do |r|
         self.outgoing_relations.create(:to_id => r)
       end
     end
