@@ -12,6 +12,7 @@ class RelatedContentExtension < Radiant::Extension
     Page.send :include, RelatedContent::PageExtensions
     Page.send :include, RelatedContent::Tags
     Admin::PageController.send :include, RelatedContent::Autocomplete
+    Admin::PageController.send :include, RelatedContent::RelatedContentInterface    
     admin.page.edit.add :form, 'related_content'
   end
   

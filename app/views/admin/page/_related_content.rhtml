@@ -1,23 +1,24 @@
-<% include_javascript 'controls' %>
-<div id="related_content_wrapper">
+<div id="related_content_wrapper" class="clearfix"> 
   <label for="related_content">Related content</label>
   <%= text_field_tag "related_content" %>
+  <div id="related_content_container">
   <% @page.related_pages.each do |related| %>
     <span class="related_page" id="related_<%= related.id %>">
       <%= link_to_function related.title, "RelatedContent.delete('#{related.id}');", :confirm => "Are you sure you want to remove this related page?" %>
     </span>
   <% end %>
+  </div>
 </div>
 <% content_for :page_scripts do %>
 	var RelatedContent = {
 		delete: function(id){
-			unadd(id);
+			RelatedContent.unadd(id);
 			new Insertion.Bottom('related_content', '<input name="page[delete_relations][]" value="'+id+'"/>');
 			return false;
 		},
 		add: function(id, title){
 			var template = new Template(<%= render(:partial => "add_related").to_json %>);
-			new Insertion.Bottom('related_content_wrapper', template.evaluate({id: id, title: title}));
+			new Insertion.Bottom('related_content_container', template.evaluate({id: id, title: title}));
 			return false;
 		},
 		unadd: function(id) {
@@ -52,14 +53,26 @@
 <% end %>
 <%= auto_complete_stylesheet %>
 <% content_for :page_css do %>
+  .clearfix:after                 {content:".";display:block;height:0;clear:both;visibility:hidden;}
+  .clearfix                       {display:inline-block;}
+  .clearfix                       {display:block;}
+  #related_content_wrapper label, #related_content_wrapper input, #related_content_wrapper div {
+    margin-right:10px;
+    float:left;
+  }
+
   .related_page a {
-	font-color: gray;
-	padding-left: 18px;
-	background: url(/images/admin/minus.png) top left no-repeat;
+  	color: gray;
+  	padding-left: 18px;
+  	background: url(/images/admin/minus.png) center left no-repeat;
   }
   div.auto_complete span.url {
    display: block;
    font-size: 75%;
-   color: silver;
+   color: blue;
+  }
+  span.related_page {
+    display:block;
+    margin:0 0 5px 20px;
   }
 <% end %>

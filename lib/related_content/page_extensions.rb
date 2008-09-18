@@ -8,12 +8,12 @@ module RelatedContent::PageExtensions
       
       has_many :related_pages, :through => :outgoing_relations, :source => :to, :class_name => "Page"
       
-      before_save :create_relations
+      after_save :create_relations
       
       attr_accessor :delete_relations, :add_relations
     end
   end
-    
+  
   def create_relations
     if @delete_relations
       @delete_relations.each do |r|
@@ -22,7 +22,7 @@ module RelatedContent::PageExtensions
     end
     if @add_relations
       @add_relations.each do |r|
-        self.outgoing_relations.build(:to_id => r)
+        self.outgoing_relations.create(:to_id => r)
       end
     end
     @delete_relations = nil

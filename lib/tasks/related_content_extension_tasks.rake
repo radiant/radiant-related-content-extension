@@ -11,7 +11,11 @@ namespace :radiant do
           RelatedContentExtension.migrator.migrate
         end
       end
-    
+
+      desc "Copies the assets of the Related Content extension"
+      task :update => :environment do
+        FileUtils.cp RelatedContentExtension.root + "/public/javascripts/lowpro.js", RAILS_ROOT + "/public/javascripts/"
+      end    
     end
   end
 end
