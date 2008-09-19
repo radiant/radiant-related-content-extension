@@ -1,13 +1,13 @@
 <div id="related_content_wrapper" class="clearfix"> 
   <label for="related_content">Related content</label>
   <%= text_field_tag "related_content" %>
-  <div id="related_content_container">
+  <ul id="related_content_container">
   <% @page.related_pages.each do |related| %>
-    <span class="related_page" id="related_<%= related.id %>">
+    <li class="related_page" id="related_<%= related.id %>">
       <%= link_to_function related.title, "RelatedContent.delete('#{related.id}');", :confirm => "Are you sure you want to remove this related page?" %>
-    </span>
+    </li>
   <% end %>
-  </div>
+  </ul>
   <p id="deleted" class="related_notice" style="display:none;">Removed related content will be deleted when you save this page.</p>
   <p id="added" class="related_notice" style="display:none;">New added related content will be saved when you save this page.</p>
 </div>
