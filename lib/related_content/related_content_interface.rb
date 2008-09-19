@@ -12,6 +12,7 @@ module RelatedContent::RelatedContentInterface
       @buttons_partials << "related_content"
       include_javascript 'lowpro'
       include_javascript 'controls'
+      include_javascript 'dragdrop'
       include_stylesheet 'admin/related_content'
     end
   end

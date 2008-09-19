@@ -2,11 +2,11 @@ module RelatedContent::PageExtensions
   def self.included(base)
     base.class_eval do
       has_many :outgoing_relations, :class_name => "PageRelation", 
-                :foreign_key => "from_id", :dependent => :destroy
+                :foreign_key => "from_id", :dependent => :destroy, :order => :position
       has_many :incoming_relations, :class_name => "PageRelation", 
                 :foreign_key => "to_id", :dependent => :destroy
       
-      has_many :related_pages, :through => :outgoing_relations, :source => :to, :class_name => "Page"
+      has_many :related_pages, :through => :outgoing_relations, :source => :to, :class_name => "Page", :order => 'page_relations.position'
       
       after_save :create_relations
       
