@@ -6,7 +6,7 @@ describe Admin::PageController do
   before do
     login_as :developer
     
-    @javascripts = %w(lowpro controls)
+    @javascripts = %w(lowpro controls dragdrop)
     @stylesheets = ['admin/related_content']
   end
   

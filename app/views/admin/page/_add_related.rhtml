@@ -1,4 +1,5 @@
-<li class="related_page" id="related_#{id}">
-	<a href="#" onclick="if(confirm('Are you sure you want to remove this related page?')){RelatedContent.unadd('#{id}')}; return false;">#{title}</a>
+<li class="related_page" id="related_#{id}" style="position:relative;">
+  #{title}
+	<a href="#" onclick="if(confirm('Are you sure you want to remove this related page?')){RelatedContent.unadd('#{id}')}; return false;"><img src="/images/admin/minus.png" alt="Delete" /></a>
 	<input type="hidden" name="page[add_relations][]" value="#{id}">
 </li>

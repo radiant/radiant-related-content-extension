@@ -4,7 +4,8 @@
   <ol id="related_content_container">
   <% @page.related_pages.each do |related| %>
     <li class="related_page" id="related_<%= related.id %>">
-      <%= link_to_function related.title, "RelatedContent.delete('#{related.id}');", :confirm => "Are you sure you want to remove this related page?" %>
+      <%=related.title%>
+      <%= link_to_function '<img src="/images/admin/minus.png" alt="Delete" />', "RelatedContent.delete('#{related.id}');", :confirm => "Are you sure you want to remove this related page?" %>
     </li>
   <% end %>
   </ol>

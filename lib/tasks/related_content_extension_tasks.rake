@@ -16,6 +16,7 @@ namespace :radiant do
       task :update => :environment do
         FileUtils.cp RelatedContentExtension.root + "/public/javascripts/lowpro.js", RAILS_ROOT + "/public/javascripts/"
         FileUtils.cp RelatedContentExtension.root + "/public/stylesheets/related_content.css", RAILS_ROOT + "/public/stylesheets/admin"
+        FileUtils.cp RelatedContentExtension.root + "/public/images/reorder.png", RAILS_ROOT + "/public/images/admin"
       end    
     end
   end
