@@ -9,7 +9,6 @@ p#deleted                       {color:red;}
 p#added                         {color:green;}
 #related_content_wrapper label, #related_content_wrapper input, #related_content_wrapper ol 
                                 {margin-right:10px;float:left;}
-li.related_page                 {background:url(/images/admin/reorder.png) no-repeat center left;padding-left:20px;}
 .related_page a                 {color: gray;margin-left: 10px;text-decoration:none;}
 div.auto_complete span.url      {display: block;font-size: 75%;color: blue;}
 li.related_page                 {margin:0 0 5px 20px;}

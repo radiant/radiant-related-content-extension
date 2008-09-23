@@ -4,6 +4,7 @@
   <ol id="related_content_container">
   <% @page.related_pages.each do |related| %>
     <li class="related_page" id="related_<%= related.id %>">
+      <img src="/images/admin/reorder.png" alt="reorder" class="reorder" />
       <%=related.title%>
       <%= link_to_function '<img src="/images/admin/minus.png" alt="Delete" />', "RelatedContent.delete('#{related.id}');", :confirm => "Are you sure you want to remove this related page?" %>
     </li>
@@ -58,6 +59,7 @@
 <% end %>
 <%= auto_complete_stylesheet %>
 <%= sortable_element 'related_content_container' , 
-  :url => { :action => "sort", :id => @page.id }, 
+  :url => { :action => "sort", :id => @page.id },
+  :handle => 'reorder' ,
   :complete => visual_effect(:highlight, ' related_content_container ' ) 
 %>
