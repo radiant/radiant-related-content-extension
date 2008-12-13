@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
 describe "RelatedContentTags" do
-  scenario :related_content
+  dataset :related_content
   
   before do
     @page = pages(:first)

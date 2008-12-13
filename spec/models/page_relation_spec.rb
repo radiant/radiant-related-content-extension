@@ -1,7 +1,8 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
 describe "PageRelationsModel" do
-  scenario :related_content
+  dataset :related_content
+  
   describe "Page" do
     before do
       @page = pages(:first)

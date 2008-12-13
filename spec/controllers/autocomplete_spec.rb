@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
 describe Admin::PagesController do
-  scenario :users, :related_content
+  dataset :users, :related_content
 
   before do
     login_as :developer

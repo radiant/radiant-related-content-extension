@@ -1,4 +1,4 @@
-class RelatedContentScenario < Scenario::Base
+class RelatedContentDataset < Dataset::Base
   uses :pages
   
   def load
