@@ -27,7 +27,7 @@ describe Admin::PagesController do
     end
 
     it "renders template without layout" do
-      controller.expect_render(:layout => false)
+      controller.should_receive(:render).with(:layout => false)
       do_get
     end
 
@@ -53,7 +53,7 @@ describe Admin::PagesController do
     end
 
     it "renders related_conent partial" do
-      controller.expect_render(:partial => 'related_content')
+      controller.should_receive(:render).with(:partial => 'related_content')
       do_get
     end
 
@@ -81,7 +81,7 @@ describe Admin::PagesController do
     end
 
     it "renders related_conent partial" do
-      controller.expect_render(:partial => 'related_content')
+      controller.should_receive(:render).with(:partial => 'related_content')
       do_get
     end
 
