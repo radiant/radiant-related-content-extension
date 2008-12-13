@@ -6,8 +6,8 @@ class RelatedContentExtension < Radiant::Extension
   description "Provides an interface and tags for relating pages to one another in a one-way fashion."
   url "http://dev.radiantcms.org/"
   define_routes do |map|
-    map.related_pages 'admin/ui/pages/related', :controller => "admin/page", :action => "related"
-    map.sort_related 'admin/ui/pages/sort', :controller => "admin/page", :action => "sort"
+    map.related_pages 'admin/ui/pages/related', :controller => "admin/pages", :action => "related"
+    map.sort_related 'admin/ui/pages/sort', :controller => "admin/pages", :action => "sort"
   end
   def activate
     Page.send :include, RelatedContent::PageExtensions
