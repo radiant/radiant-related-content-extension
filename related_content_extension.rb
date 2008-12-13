@@ -12,12 +12,12 @@ class RelatedContentExtension < Radiant::Extension
   def activate
     Page.send :include, RelatedContent::PageExtensions
     Page.send :include, RelatedContent::Tags
-    Admin::PageController.send :include, RelatedContent::Autocomplete
-    Admin::PageController.send :include, RelatedContent::RelatedContentInterface    
-    Admin::PageController.send :include, RelatedContent::RelatedContentSort
+    Admin::PagesController.send :include, RelatedContent::Autocomplete
+    Admin::PagesController.send :include, RelatedContent::RelatedContentInterface
+    Admin::PagesController.send :include, RelatedContent::RelatedContentSort
   end
-  
+
   def deactivate
   end
-  
+
 end
