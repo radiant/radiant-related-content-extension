@@ -6,7 +6,7 @@
     <li class="related_page" id="related_<%= related.id %>">
       <img src="/images/admin/reorder.png" alt="reorder" class="reorder" />
       <%=related.title%>
-      <%= link_to_function '<img src="/images/admin/minus.png" alt="Delete" />', "RelatedContent.delete('#{related.id}');", :confirm => "Are you sure you want to remove this related page?" %>
+      <%= link_to_function '<img src="/images/admin/minus.png" alt="Delete" />', "RelatedContent.remove('#{related.id}');", :confirm => "Are you sure you want to remove this related page?" %>
     </li>
   <% end %>
   </ol>
@@ -15,7 +15,7 @@
 </div>
 <% content_for :page_scripts do %>
 	var RelatedContent = {
-		delete: function(id){
+		remove: function(id){
 			RelatedContent.unadd(id);
 			new Insertion.Bottom('related_content', '<input name="page[delete_relations][]" value="'+id+'"/>');
 			$('deleted').show();
