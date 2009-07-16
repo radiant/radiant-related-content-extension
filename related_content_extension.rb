@@ -1,5 +1,4 @@
-# Uncomment this if you reference any of your controllers in activate
-require_dependency 'application'
+require_dependency 'application_controller'
 
 class RelatedContentExtension < Radiant::Extension
   version "0.1"
@@ -10,11 +9,15 @@ class RelatedContentExtension < Radiant::Extension
     map.sort_related 'admin/ui/pages/sort', :controller => "admin/pages", :action => "sort"
   end
   def activate
-    Page.send :include, RelatedContent::PageExtensions
-    Page.send :include, RelatedContent::Tags
-    Admin::PagesController.send :include, RelatedContent::Autocomplete
-    Admin::PagesController.send :include, RelatedContent::RelatedContentInterface
-    Admin::PagesController.send :include, RelatedContent::RelatedContentSort
+    Page.class_eval{
+      include RelatedContent::PageExtensions
+      include RelatedContent::Tags
+    }
+    Admin::PagesController.class_eval { 
+      include RelatedContent::Autocomplete
+      include RelatedContent::RelatedContentInterface
+      include RelatedContent::RelatedContentSort
+    }
   end
 
   def deactivate
